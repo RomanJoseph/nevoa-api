@@ -1,0 +1,43 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nevoa-api
+    restart: always
+    ports:
+      - '3000:3000'
+    environment:
+      DATABASE_HOST: project-manager-db
+      DATABASE_PORT: 5432
+      DATABASE_USERNAME: projectmanager
+      DATABASE_PASSWORD: projectmanager
+      DATABASE_NAME: projectmanager
+      JWT_SECRET: your_jwt_secret_key
+    depends_on:
+      - project-manager-db
+    networks:
+      - app-net
+
+  project-manager-db:
+    image: postgres:16
+    container_name: project-manager
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: projectmanager
+      POSTGRES_PASSWORD: projectmanager
+      POSTGRES_DB: projectmanager
+    volumes:
+      - project-manager_data:/var/lib/postgresql/data
+    networks:
+      - app-net
+
+networks:
+  app-net:
+    name: app-net
+    driver: bridge
+
+volumes:
+  project-manager_data:

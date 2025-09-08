@@ -1,4 +1,4 @@
-# FFingers API
+# Project Managment API
 
 ## Como Rodar o Projeto
 
@@ -90,5 +90,4 @@ A documentação completa da API com todos os endpoints disponíveis pode ser ac
 - **JWT**: Padrão aberto para criar tokens de acesso.
 - **class-validator** e **class-transformer**: Bibliotecas para validação e transformação de dados.
 
-# ffingers-api
 # nevoa-api
